@@ -4,60 +4,61 @@
 using namespace std;
 
 
-void factorial(int n, int r, mpz_t r_result, mpz_t n_result, mpz_t comb, mpz_t nr_result)
+void factorial(int n, int r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t nr_result)
 {
   int i=r,j=n;
 
   while( i>0 )
   { 
-    mpz_init_set_ui(r_result, i); //r_result = i
+    mpf_init_set_ui(r_result, i); //r_result = i
 
-   cout<<"\nr_r: ";
+    cout<<"\ni="; cout<< i;  cout<<" r_r:" ;
 
-    mpz_out_str(stdout,10,r_result);
+    mpf_out_str(stdout,10,100,r_result);
     
-    mpz_init_set_ui(n_result, j); //n_result = j
-    cout<<"\nn_r: ";
-    mpz_out_str(stdout,10,n_result);
+    mpf_init_set_ui(n_result, j); //n_result = j
+
+    cout<<"\nj="; cout<< j;  cout<<" n_r:" ;
+
+    mpf_out_str(stdout,10,100,n_result);
 
     j--; i--;
  
-    mpz_tdiv_q(nr_result,n_result,r_result ); // n/r_result = n_result / r_result
+    mpf_div(nr_result,n_result,r_result ); // n/r_result = n_result / r_result
     cout<<"\nnr_r: ";
-    mpz_out_str(stdout,10,nr_result);
+    mpf_out_str(stdout,10,100,nr_result);
 
-    mpz_mul(comb,comb,nr_result); //comb = comb * n/r_result
+    mpf_mul(comb,comb,nr_result); //comb = comb * n/r_result
   
     cout<<"\ncomb: ";
-    mpz_out_str(stdout,10,comb);
+    mpf_out_str(stdout,10,100,comb);
 
-    cout<<"\nVuelta 1\n";
+    cout<<"\nCiclo\n";
    }
 }
 
 
-
 int main(int argc, char const *argv[]) {
-  int n=5;
-  int r=2;
+  int n=6;
+  int r=3;
   /* Asigna punteros */
-  mpz_t n_result;
-  mpz_t r_result;
-  mpz_t nr_result;
-  mpz_t comb;
+  mpf_t n_result;
+  mpf_t r_result;
+  mpf_t nr_result;
+  mpf_t comb;
   /* Inicia variables y les asigna un número */
-  mpz_init_set_ui(n_result, 1); //inicia puntero y le inicia valor
-  mpz_init_set_ui(r_result, 1);
-  mpz_init_set_ui(nr_result, 1);
-  mpz_init_set_ui(comb,1);
+  mpf_init_set_ui(n_result, 1); //inicia puntero y le inicia valor
+  mpf_init_set_ui(r_result, 1);
+  mpf_init_set_ui(nr_result, 1);
+  mpf_init_set_ui(comb,1);
 
   factorial( n,r,r_result,n_result,comb,nr_result );
 
-  mpz_out_str(stdout,10,comb);
+  mpf_out_str(stdout,10,10,comb);
 
-  mpz_clear(n_result);
-  mpz_clear(r_result);
-  mpz_clear(nr_result);
-  mpz_clear(comb);
+  mpf_clear(n_result);
+  mpf_clear(r_result);
+  mpf_clear(nr_result);
+  mpf_clear(comb);
   return 0;
 }
