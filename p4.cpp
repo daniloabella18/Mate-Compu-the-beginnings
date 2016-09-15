@@ -1,6 +1,7 @@
 #include <iostream>
 #include <gmp.h>
 #include <cstdlib>
+#include <time.h>
 using namespace std;
 
 
@@ -38,7 +39,10 @@ void factorial(int n, int r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t n
 }
 
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char *argv[]) 
+{
+  clock_t start, end;
+  start = clock();
   int n=6;
   int r=3;
   /* Asigna punteros */
@@ -60,5 +64,7 @@ int main(int argc, char const *argv[]) {
   mpf_clear(r_result);
   mpf_clear(nr_result);
   mpf_clear(comb);
+  end = clock();
+  cout<<"\nTiempo: "; cout<<((double)(end-start))/CLOCKS_PER_SEC; cout<<"\n";
   return 0;
 }
