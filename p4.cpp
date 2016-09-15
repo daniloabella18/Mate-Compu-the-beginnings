@@ -5,28 +5,50 @@
 using namespace std;
 
 
-void factorial(int n, int r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t nr_result)
+void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t nr_result)
 {
-  int i=r,j=n;
+ int i=mpf_cmp_ui (r, 1);
 
-  while( i>0 )
+
+  while( i > 0 )
   { 
-    mpf_init_set_ui(r_result, i); //r_result = i
 
-    cout<<"\ni="; cout<< i;  cout<<" r_r:" ;
+//-----------------------------------------------// Comparaciones
+
+    i=mpf_cmp_ui (r, 1);
+
+//-----------------------------------------------//
+
+    mpf_init_set(r_result, r); //r_result = i
+
+    cout<<"\nr=";
+
+    mpf_out_str(stdout,10,100,r); 
+  
+    cout<<"\nr_r:" ;
 
     mpf_out_str(stdout,10,100,r_result);
-    
-    mpf_init_set_ui(n_result, j); //n_result = j
 
-    cout<<"\nj="; cout<< j;  cout<<" n_r:" ;
+//-----------------------------------------------//
+    
+    mpf_init_set(n_result, n); //n_result = j
+
+    cout<<"\nn=";
+
+    mpf_out_str(stdout,10,100,n); 
+  
+    cout<<"\nn_r:" ;
 
     mpf_out_str(stdout,10,100,n_result);
 
-    j--; i--;
+//-----------------------------------------------//
+
+    mpf_sub_ui(r,r,1); mpf_sub_ui(n,n,1);
  
     mpf_div(nr_result,n_result,r_result ); // n/r_result = n_result / r_result
+
     cout<<"\nnr_r: ";
+
     mpf_out_str(stdout,10,100,nr_result);
 
     mpf_mul(comb,comb,nr_result); //comb = comb * n/r_result
@@ -41,10 +63,19 @@ void factorial(int n, int r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t n
 
 int main(int argc, char *argv[]) 
 {
+  if (argc<3)
+  {					
+     printf("Please supply two numbers to add.\n");
+     return 1;
+  }
   clock_t start, end;
   start = clock();
-  int n=6;
-  int r=3;
+
+  mpf_t n,r;
+
+  mpf_init_set_str (r, argv[2], 10);
+  mpf_init_set_str (n, argv[1], 10);
+
   /* Asigna punteros */
   mpf_t n_result;
   mpf_t r_result;
@@ -58,6 +89,8 @@ int main(int argc, char *argv[])
 
   factorial( n,r,r_result,n_result,comb,nr_result );
 
+  cout<<"\nCombinatoria:";
+
   mpf_out_str(stdout,10,10,comb);
 
   mpf_clear(n_result);
@@ -65,6 +98,6 @@ int main(int argc, char *argv[])
   mpf_clear(nr_result);
   mpf_clear(comb);
   end = clock();
-  cout<<"\nTiempo: "; cout<<((double)(end-start))/CLOCKS_PER_SEC; cout<<"\n";
+  cout<<"\nTiempo: "; cout<<((double)(end-start))/CLOCKS_PER_SEC; cout<<"\n\n";
   return 0;
 }
