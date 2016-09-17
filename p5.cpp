@@ -78,7 +78,6 @@ int main(int argc, char *argv[])
   mpf_init_set_str (n_el, argv[1], 10);
 
 // Asigna punteros 
-  mpf_t n_result;
   mpf_t r_result;
   mpf_t numerador;
   mpf_t fac;
@@ -86,17 +85,20 @@ int main(int argc, char *argv[])
   mpf_t denom;
   mpf_t div_taylor;
   mpf_t div;
+  mpf_t dospi;
+  mpf_t raiz;
 // Inicia variables y les asigna un número
-  mpf_init_set_ui(n_result, 1); //inicia puntero y le inicia valor
   mpf_init_set_ui(r_result, 1);
   mpf_init_set_ui(numerador, 1);
   mpf_init_set_ui(fac,1);
   mpf_init_set_ui(comb,1);
   mpf_init_set_ui(denom,1);
   mpf_init_set_ui(div_taylor,1);
+  mpf_init_set_ui(dospi,1);
+  mpf_init_set_ui(raiz,1);
   mpf_init_set_ui(div,1);
 
-//======================== Division //==========================--------------------------//
+//========================// Division //==========================--------------------------//
 //----------/ Numerador /-----------------------------------------------------------------//
 
   n_pow = mpf_get_ui(n_el);                                   		// Pasaje a int;
@@ -119,15 +121,27 @@ int main(int argc, char *argv[])
   mpf_ui_div( div , numerador_n , denom );                        		// div = numerador_n / denom 
 
   cout<<"\ndiv: ( n^((n+1)/2) / e^n ) ="; mpf_out_str(stdout,10,100,div);  cout<<"\n";
-//--------------------------------------------------------//
+
+//========================// Raiz //==========================--------------------------//
+
+  mpf_init_set_d( dospi , 6.28318530717958647692528676655 );
+
+  cout<<"\ndospi: "; mpf_out_str(stdout,10,100,dospi);  cout<<"\n";
+
+  mpf_sqrt ( raiz , dospi );
+
+  cout<<"\nraiz de dospi: "; mpf_out_str(stdout,10,100,raiz);  cout<<"\n";
 
 
+//========================// Resultado final //==========================--------------------------//
 
-  cout<<"\nCombinatoria:";
 
-  mpf_out_str(stdout,10,10,comb);
+  mpf_mul(comb,raiz,div); //fac = fac * r_result
 
-  mpf_clear(n_result);
+  cout<<"\nk!(apróx):";
+
+  mpf_out_str(stdout,10,10,comb); // Muestra resultado final
+
   mpf_clear(r_result);
   mpf_clear(n);
   mpf_clear(r);
@@ -137,6 +151,9 @@ int main(int argc, char *argv[])
   mpf_clear(comb);
   mpf_clear(denom);
   mpf_clear(div);
+  mpf_clear(dospi);
+  mpf_clear(raiz);
+
 
   end = clock();
 
