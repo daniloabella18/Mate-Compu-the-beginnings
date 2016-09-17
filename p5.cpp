@@ -5,6 +5,8 @@
 #include <math.h>
 using namespace std;
 
+//-----------------------------------------------------------------------------------------------------------------------------//
+
 
 void factorial( mpf_t r, mpf_t r_result, mpf_t fac )
 {
@@ -13,32 +15,47 @@ void factorial( mpf_t r, mpf_t r_result, mpf_t fac )
   while( i > 0 )
   { 
 
-    i=mpf_cmp_ui (r, 1);
+    i=mpf_cmp_ui (r, 1);       // r = i
 //-----------------------------------------------//
 
     mpf_init_set(r_result, r); //r_result = r
 
-    cout<<"\nr=";
-
-    mpf_out_str(stdout,10,100,r); 
-  
-    cout<<"\nr_r:" ;
-
-    mpf_out_str(stdout,10,100,r_result);
-
 //-----------------------------------------------//
 
     mpf_mul(fac,fac,r_result); //fac = fac * r_result
-  
-    cout<<"\nFactorial: ";
 
-    mpf_out_str(stdout,10,100,fac);
-
-    cout<<"\nCiclo\n";
-
-    mpf_sub_ui(r,r,1);
+    mpf_sub_ui(r,r,1);         // r = r - 1
   }
 }
+
+//-----------------------------------------------------------------------------------------------------------------------------//
+
+
+void taylor ( mpf_t n , mpf_t n_el , mpf_t div_taylor , mpf_t denom , mpf_t r , mpf_t r_result , mpf_t fac )
+{ 
+  int i;  mpf_init_set_ui( denom , 1 );
+
+  for ( i=1 ; i < 100 ; i++ )
+  { 
+    mpf_pow_ui( n_el , n , i);                 // n_el = n^i
+
+    mpf_init_set_ui(r,i);                      // r=i
+
+    mpf_init_set_ui(fac,1);                    // fac = 1
+
+    factorial( r,r_result,fac );               // fac = n!
+
+    mpf_div( div_taylor , n_el , fac );        // div_taylor = n_el / fac 
+
+    mpf_add( denom , denom , div_taylor ); // denom = denom + div_taylor
+  }
+  
+   cout<<"\ndenominador: e^n=";  mpf_out_str(stdout,10,100,denom);  cout<<"\n";
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------//
+
 
 
 int main(int argc, char *argv[]) 
@@ -66,6 +83,8 @@ int main(int argc, char *argv[])
   mpf_t numerador;
   mpf_t fac;
   mpf_t comb;
+  mpf_t denom;
+  mpf_t div_taylor;
   mpf_t div;
 // Inicia variables y les asigna un número
   mpf_init_set_ui(n_result, 1); //inicia puntero y le inicia valor
@@ -73,33 +92,36 @@ int main(int argc, char *argv[])
   mpf_init_set_ui(numerador, 1);
   mpf_init_set_ui(fac,1);
   mpf_init_set_ui(comb,1);
+  mpf_init_set_ui(denom,1);
+  mpf_init_set_ui(div_taylor,1);
   mpf_init_set_ui(div,1);
 
+//======================== Division //==========================--------------------------//
+//----------/ Numerador /-----------------------------------------------------------------//
 
-//--------------------------------------------------------//
-
-  n_pow = mpf_get_ui(n_el);
+  n_pow = mpf_get_ui(n_el);                                   		// Pasaje a int;
 
   cout<<"\nn_pow: ((n+1)/2)=";  cout<<n_pow;  cout<<"\n";
 //-------------------------------------------------------------//
-  potencia = (n_pow+1)/2;
+  potencia = (n_pow+1)/2;				     		// Pasaje a float;
 
   cout<<"\npotencia: n^((n+1)/2)=";  cout<<potencia;  cout<<"\n";
-//-------------------------------------------------------------//
-  numerador_n = pow( n_pow , potencia );
+//---------------------------------------------------------------------------------------//
+  numerador_n = pow( n_pow , potencia );                     		// Calcular potencia;
 
   cout<<"\nnumerador_n: n^((n+1)/2)=";  cout<<numerador_n;  cout<<"\n";
-//-------------------------------------------------------------//
-/*mpf_pow_ui( numerador , n , potencia);
-
-  cout<<"\nnumerador: n^((n+1)/2)=";  mpf_out_str(stdout,10,10,numerador);  cout<<"\n";*/
 
 
+//----------/Denominador /-----------------------------------------------------------------//
 
+  taylor ( n , n_el , div_taylor , denom , r , r_result , fac );
 
+  mpf_ui_div( div , numerador_n , denom );                        		// div = numerador_n / denom 
+
+  cout<<"\ndiv: ( n^((n+1)/2) / e^n ) ="; mpf_out_str(stdout,10,100,div);  cout<<"\n";
 //--------------------------------------------------------//
 
-  factorial( r,r_result,fac );
+
 
   cout<<"\nCombinatoria:";
 
@@ -113,6 +135,7 @@ int main(int argc, char *argv[])
   mpf_clear(numerador);
   mpf_clear(fac);
   mpf_clear(comb);
+  mpf_clear(denom);
   mpf_clear(div);
 
   end = clock();
