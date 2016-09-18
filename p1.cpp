@@ -4,10 +4,10 @@
 using namespace std;
 
 
-void factorial(int a, mpz_t result){
-        int i;
-        for(i = 1; i<=a; i++) {
-                mpz_mul_ui(result,result,i); //result = result * i
+void factorial(mpz_t n, mpz_t result){
+        mpz_t i;
+        for (mpz_init_set_ui(i, 1); mpz_cmp(i,n) < 0; mpz_add_ui(i, i, 1)) {
+                mpz_mul(result,result,i); //result = result * i
         }
 }
 
@@ -28,7 +28,7 @@ int main(int argc, char const *argv[]) {
         mpz_init_set_str(n, argv[1],10);
         mpz_init_set_str(r, argv[2],10);
         mpz_init(nr);
-        mpn_sub_n(nr,n,r); //nr = n-r
+        mpz_sub(nr ,n , r); //nr = n-r
         mpz_init_set_ui(n_result, 1); //inicia puntero y le inicia valor
         mpz_init_set_ui(r_result, 1);
         mpz_init_set_ui(nr_result, 1);
