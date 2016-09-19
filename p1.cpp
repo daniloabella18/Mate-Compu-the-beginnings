@@ -12,7 +12,7 @@ void factorial(mpz_t n, mpz_t result){
 }
 
 
-int main(int argc, char const *argv[]) {
+int p1(int argc, char const *argv[]) {
         /* Asigna punteros */
         mpz_t n;
         mpz_t r;
