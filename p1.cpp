@@ -6,16 +6,13 @@ using namespace std;
 
 void factorial(mpz_t n, mpz_t result){
         mpz_t i;
-        for (mpz_init_set_ui(i, 1); mpz_cmp(i,n) < 0; mpz_add_ui(i, i, 1)) {
+        for (mpz_init_set_ui(i, 1); mpz_cmp(i,n) <= 0; mpz_add_ui(i, i, 1)) {
                 mpz_mul(result,result,i); //result = result * i
         }
 }
 
 
 int main(int argc, char const *argv[]) {
-        //int n=4;
-        //int r=2;
-        //int nr = n - r;
         /* Asigna punteros */
         mpz_t n;
         mpz_t r;
