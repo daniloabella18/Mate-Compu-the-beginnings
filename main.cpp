@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <gmp.h>
 #include <iostream>
+#include <time.h>
 #include "p1.cpp"
 #include "p2.cpp"
 #include "p3.cpp"

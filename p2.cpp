@@ -11,7 +11,7 @@ void factorial2(mpz_t n, mpz_t result){
         }
 }
 
-//multiply all the numbres between from and to and the result in result
+//multiply all the numbers between from and to and save the result in result
 void multiply(mpz_t from, mpz_t to, mpz_t result){
         for (; mpz_cmp(from,to) <=0; mpz_add_ui(from, from, 1)) {
                 mpz_mul(result,result,from); //result = result * i
@@ -19,7 +19,7 @@ void multiply(mpz_t from, mpz_t to, mpz_t result){
 }
 
 int p2(int argc, char const *argv[]) {
-        /* Asigna punteros */
+        /* Create Pointers */
         mpz_t n;
         mpz_t r;
         mpz_t nr;
@@ -27,7 +27,7 @@ int p2(int argc, char const *argv[]) {
         mpz_t r_result;
         mpz_t nr_result;
         mpz_t comb;
-        /* Inicia variables y les asigna un número */
+        /*Initialize integers and store a value in them*/
         mpz_init_set_str(n, argv[1],10);
         mpz_init_set_str(r, argv[2],10);
         mpz_init(nr);
