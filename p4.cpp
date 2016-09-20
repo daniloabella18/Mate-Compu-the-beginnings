@@ -23,25 +23,9 @@ void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf
 
                 mpf_init_set(r_result, r); //r_result = r
 
-                cout<<"\nr=";
-
-                mpf_out_str(stdout,10,100,r); // Muestra r
-
-                cout<<"\nr_r:";
-
-                mpf_out_str(stdout,10,100,r_result); // Muestra r_result
-
 //--------------------------------------------------------------------------//
 
                 mpf_init_set(n_result, n); //n_result = n
-
-                cout<<"\nn=";
-
-                mpf_out_str(stdout,10,100,n); // Muestra n
-
-                cout<<"\nn_r:";
-
-                mpf_out_str(stdout,10,100,n_result); // Muestra n_result
 
 //--------------------------------------------------------------------------//
 
@@ -49,16 +33,7 @@ void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf
 
                 mpf_div(nr_result,n_result,r_result ); // nr_result = n_result / r_result
 
-                cout<<"\nnr_r: ";
-
-                mpf_out_str(stdout,10,100,nr_result); // Muestra nr_result
-
                 mpf_mul(comb,comb,nr_result); //comb = comb * n/r_result
-
-                cout<<"\ncomb: ";
-                mpf_out_str(stdout,10,100,comb); // Muestra comb
-
-                cout<<"\nCiclo\n";
         }
 }
 
@@ -66,14 +41,13 @@ void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf
 int main(int argc, char *argv[])
 {
 //--------------/ Evalua que el usuario coloque al menos 2 numeros //--------//
-        if (argc<3)
+  /*    if (argc<3)
         {
                 printf("Please supply two numbers to add.\n");
                 return 1;
         }
+ */
 //--------------------------------------------------------------------------//
-        clock_t start, end;
-        start = clock();  // Toma tiempo inicial
 
         mpf_t n,r;
 // Transforma valores ingresados como variables mpf_t.
@@ -95,18 +69,17 @@ int main(int argc, char *argv[])
 
 //--------------/ Combinatoria /----------------//
 
-        cout<<"\nCombinatoria:";
+  //    cout<<"\nCombinatoria:";
 
         mpf_out_str(stdout,10,10,comb);
+
+    //  cout<<"\n"<<endl;
+
 // Elimina punteros
         mpf_clear(n_result);
         mpf_clear(r_result);
         mpf_clear(nr_result);
         mpf_clear(comb);
-
-        end = clock();              // Toma tiempo final
-
-        cout<<"\nTiempo: "; cout<<((double)(end-start))/CLOCKS_PER_SEC; cout<<"\n\n"; // Calcula tiempo usado y lo muestra
 
         return 0;
 }
