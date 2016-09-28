@@ -11,7 +11,7 @@ using namespace std;
 void factorial( mpf_t nn, mpf_t nn_result, mpf_t fac )
 {
         int i=mpf_cmp_ui (nn, 1);
-
+ 
         while( i > 0 )
         {
 
