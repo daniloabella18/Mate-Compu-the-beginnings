@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <gmp.h>
 #include <iostream>
+#include <time.h>
 #include "p1.cpp"
 #include "p2.cpp"
 #include "p3.cpp"
@@ -12,14 +13,19 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
+        double t =0;
+        double sum=0;
+        clock_t tStart;
+        bool flag =false;
         if(argc < 4) {
                 cout<<"Insufficient arguments";
         }else{
-                clock_t tStart = clock();
-                double dif;
+          do{
+                tStart = clock();
                 switch (atoi(argv[3])) {
                 case 1:
-                        p1(argc, argv);
+                        p1(argc, argv,flag);
+                        flag = true;
                         break;
                 case 2:
                         p2(argc, argv);
@@ -34,7 +40,12 @@ int main(int argc, char const *argv[]) {
                         // p5(argc,argv);
                         break;
                 }
-                printf("\t%.7f\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+                t=(t + (double)(clock() - tStart)/CLOCKS_PER_SEC )/2;
+                sum+=t;
+            }while(sum < 1);
+            printf("\t%.7f\n", t);
         }
+
+
         return 0;
 }

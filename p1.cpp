@@ -10,7 +10,7 @@ void factorial(mpz_t n, mpz_t result) {
         }
 }
 
-int p1(int argc, char const *argv[]) {
+int p1(int argc, char const *argv[],bool flag) {
         /* Asigna punteros */
         mpz_t n;
         mpz_t r;
@@ -37,7 +37,8 @@ int p1(int argc, char const *argv[]) {
                                             // multiplica un mpz y una constante
         mpz_cdiv_q(comb, n_result, comb);
 
-        mpz_out_str(stdout, 10, comb);
+        if(flag==false)
+          mpz_out_str(stdout, 10, comb);
 
         mpz_clear(n_result);
         mpz_clear(r_result);
