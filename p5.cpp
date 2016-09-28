@@ -49,9 +49,6 @@ void taylor ( mpf_t n, mpf_t p_el, mpf_t div_taylor, mpf_t denom, mpf_t nn, mpf_
 
                 mpf_add( denom, denom, div_taylor ); // denom = denom + div_taylor
         }
-cout<<"e^n"<<endl;
-        mpf_out_str(stdout,10,10,denom);  // Muestra resultado final
-cout<<""<<endl;
 
 }
 
@@ -127,15 +124,7 @@ int main(int argc, char *argv[])
 
           taylor ( n, p_el, div_taylor, denom, nn, nn_result, fac );
 
-          cout<<"numerador:"<<endl;
-          cout<<numerador_n;
-	  cout<<""<<endl;
-
           mpf_ui_div( div, numerador_n, denom );                        // div = numerador_n / denom
-
-          cout<<"div:"<<endl;
-          mpf_out_str(stdout,10,10,div);  // Muestra resultado final
-	  cout<<""<<endl;
 
 //========================// Raiz //==========================--------------------------//
 
@@ -147,19 +136,12 @@ int main(int argc, char *argv[])
 
 
           mpf_mul(fac_actual,raiz,div); 	//fac_actual = raiz * div
-/*
-          cout<<"fac_actual:"<<endl;
-          mpf_out_str(stdout,10,10,fac_actual);  // Muestra resultado final
-	  cout<<""<<endl;
-*/
+
      	  switch( i )
           {
             case ( 0 ):
 
             mpf_init_set(fac_n,fac_actual);  
-          cout<<"fac_n:"<<endl;
-          mpf_out_str(stdout,10,10,fac_n);  // Muestra resultado final
-	  cout<<""<<endl;
             mpf_init_set(p_el,pr_el); 		// p_el = pr_el
             mpf_init_set(n,r); 			// n = r
 
@@ -168,9 +150,6 @@ int main(int argc, char *argv[])
             case ( 1 ):
 
             mpf_init_set(fac_r,fac_actual);
-          cout<<"fac_r:"<<endl;
-          mpf_out_str(stdout,10,10,fac_r);  // Muestra resultado final
-	  cout<<""<<endl;
             mpf_init_set(p_el,nr_el); 		// p_el = nr_el
             mpf_init_set(n,nr); 		// n = nr
 
@@ -179,9 +158,6 @@ int main(int argc, char *argv[])
             case ( 2 ):
 
             mpf_init_set(fac_nr,fac_actual);  
-          cout<<"fac_nr:"<<endl;
-          mpf_out_str(stdout,10,10,fac_nr);  // Muestra resultado final
-	  cout<<""<<endl;
             break;
 //---------------------------------------------------------------------------------------------------//
           }
@@ -190,19 +166,8 @@ int main(int argc, char *argv[])
 
 
         mpf_mul( rnr , fac_r , fac_nr ); // denominador
-        cout<<"factoriales:"<<endl;
-mpf_out_str(stdout,10,10,fac_n); 
-mpf_out_str(stdout,10,10,fac_r); 
-mpf_out_str(stdout,10,10,fac_nr); 
-        cout<<"\nmul:"<<endl;
-        mpf_out_str(stdout,10,10,rnr); 
-        cout<<""<<endl;
 
         mpf_div( comb , fac_n , rnr ); 
-
-        cout<<"div:"<<endl;
-        mpf_out_str(stdout,10,10,div); 
-        cout<<""<<endl;
 
         mpf_out_str(stdout,10,10,comb);  // Muestra resultado final
 
