@@ -1,9 +1,4 @@
-#include <iostream>
-#include <gmp.h>
-#include <cstdlib>
-using namespace std;
-
-//calcula el factorial de un número n y lo guarda en result
+/* Calcula el factorial de un número n y lo guarda en result */
 void factorial2(mpz_t n, mpz_t result){
         mpz_t i;
         for (mpz_init_set_ui(i, 1); mpz_cmp(i,n) <= 0; mpz_add_ui(i, i, 1)) {
@@ -18,7 +13,7 @@ void multiply(mpz_t from, mpz_t to, mpz_t result){
         }
 }
 
-int p2(int argc, char const *argv[]) {
+int p2(int argc, char const *argv[], bool flag) {
         /* Asigna punteros*/
         mpz_t n;
         mpz_t r;
@@ -51,7 +46,8 @@ int p2(int argc, char const *argv[]) {
                 mpz_cdiv_q(comb,n_result, r_result);
         }
 
-        mpz_out_str(stdout,10,comb);
+        if(flag==false)
+          mpz_out_str(stdout,10,comb);
 
 
         mpz_clear(n_result);

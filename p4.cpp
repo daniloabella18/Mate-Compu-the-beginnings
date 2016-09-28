@@ -2,12 +2,6 @@
 // LCC - USACH
 // Xubuntu
 
-#include <iostream>
-#include <gmp.h>
-#include <cstdlib>
-#include <time.h>
-using namespace std;
-
 
 void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf_t nr_result)
 {

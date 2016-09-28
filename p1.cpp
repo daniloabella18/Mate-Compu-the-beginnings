@@ -1,9 +1,4 @@
-#include <cstdlib>
-#include <gmp.h>
-#include <iostream>
-using namespace std;
-
-//calcula el factorial de un número n y lo guarda en result
+/* Calcula el factorial de un número n y lo guarda en result */
 void factorial(mpz_t n, mpz_t result) {
         mpz_t i;
         for (mpz_init_set_ui(i, 1); mpz_cmp(i, n) <= 0; mpz_add_ui(i, i, 1)) {

@@ -8,7 +8,6 @@
 #include "p3.cpp"
 #include "p4.cpp"
 /* Estos no pueden ser agregados hasta que se arregle la salida"
-
    #include "p5.cpp"
  */
 using namespace std;
@@ -29,7 +28,7 @@ int main(int argc, char const *argv[]) {
                         flag = true;
                         break;
                 case 2:
-                        p2(argc, argv);
+                        p2(argc, argv,flag);
                         flag = true;
                         break;
                 case 3:
@@ -44,7 +43,9 @@ int main(int argc, char const *argv[]) {
                         // p5(argc,argv);
                         break;
                 }
-                t=(t + (double)(clock() - tStart)/CLOCKS_PER_SEC )/2;
+                /* Calcula el promedio */
+                t = (t + (double)(clock() - tStart)/CLOCKS_PER_SEC )/2;
+                /*Ve si ya ha pasado un segundo  */
                 sum+=t;
             }while(sum < 1);
             printf("\t%.7f\n", t);
