@@ -139,11 +139,7 @@ int main(int argc, char *argv[])
           {
             case ( 0 ):
 
-	    cout<<"\nn!(apróx):";
             mpf_init_set(fac_n,fac_actual);  
-            mpf_out_str(stdout,10,10,fac_n); 	// Muestra resultado factorial
-
-     	    cout<<"\n"<<endl;
 
             mpf_init_set(p_el,pr_el); 		// p_el = pr_el
             mpf_init_set(n,r); 			// n = r
@@ -152,11 +148,7 @@ int main(int argc, char *argv[])
 //---------------------------------------------------------------------------------------------------//
             case ( 1 ):
 
-	    cout<<"\nr!(apróx):";
             mpf_init_set(fac_r,fac_actual);
-            mpf_out_str(stdout,10,10,fac_r); // Muestra resultado factorial
-
-     	    cout<<"\n"<<endl;
 
             mpf_init_set(p_el,nr_el); 		// p_el = nr_el
             mpf_init_set(n,nr); 		// n = nr
@@ -165,11 +157,7 @@ int main(int argc, char *argv[])
 //---------------------------------------------------------------------------------------------------//
             case ( 2 ):
 
-	    cout<<"\nnr!(apróx):";
             mpf_init_set(fac_nr,fac_actual);  
-            mpf_out_str(stdout,10,10,fac_nr); // Muestra resultado factorial
-
-     	    cout<<"\n"<<endl;
 
             break;
 //---------------------------------------------------------------------------------------------------//
@@ -177,9 +165,6 @@ int main(int argc, char *argv[])
 
         }
 
- 
-
-        cout<<"\ncomb(apróx):";
 
         mpf_mul( rnr , fac_r , fac_nr ); // denominador
 
@@ -187,7 +172,6 @@ int main(int argc, char *argv[])
 
         mpf_out_str(stdout,10,10,comb);  // Muestra resultado final
 
-        cout<<"\n"<<endl;
 
         mpf_clear(nn_result);
         mpf_clear(n);
