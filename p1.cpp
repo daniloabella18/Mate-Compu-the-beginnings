@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+//calcula el factorial de un número n y lo guarda en result
 void factorial(mpz_t n, mpz_t result) {
         mpz_t i;
         for (mpz_init_set_ui(i, 1); mpz_cmp(i, n) <= 0; mpz_add_ui(i, i, 1)) {
@@ -29,13 +30,13 @@ int p1(int argc, char const *argv[],bool flag) {
         mpz_init_set_ui(nr_result, 1);
         mpz_init_set_ui(comb, 0);
 
+        //calcula los factoriales de n,r y n-r
         factorial(n, n_result);
         factorial(r, r_result);
         factorial(nr, nr_result);
 
         mpz_mul(comb, r_result, nr_result); // Multiplica dos mpz, si tiene _ui
-                                            // multiplica un mpz y una constante
-        mpz_cdiv_q(comb, n_result, comb);
+        mpz_cdiv_q(comb, n_result, comb);// multiplica un mpz y una constante
 
         if(flag==false)
           mpz_out_str(stdout, 10, comb);
