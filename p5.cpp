@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
 
         }
 
-
+ 
 
         cout<<"\ncomb(apróx):";
 
