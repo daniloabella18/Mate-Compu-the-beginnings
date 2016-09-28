@@ -51,7 +51,7 @@ EOFMarker
 #n=$1 r=$2 $3=k  $4=metodo
 #n fijo y r esta siendo constantemente multiplicado por k hasta n
 function nFijokVaria {
-  echo -n "" > Informe/Metodo$4/data1.txt
+  echo -n "" > Informe/Metodo$4/data3.txt
   for (( i=$2; i<=$1; i = i*$3 ))
     do
       echo $(./a.out $1 $i $4) $i >> Informe/Metodo$4/data3.txt
@@ -108,21 +108,22 @@ read opcion
 #borra todo en data.txt
 if [[ "$opcion" == 1 ]]; then
   echo "Ingrese método combinatorio a utilizar"
-  n=10
+  n=1000
   r=1
   read m
   nFijo $n $r $m
 elif [[ "$opcion" == 2 ]]; then
   echo "método combinatorio a utilizar"
-  n=10
-  r=5
+  n=1000
+  r=100
   read m
   rFijo $n $r $m
 elif [[ "$opcion" == 3 ]]; then
   echo "Ingrese k y método combinatorio a utilizar"
-  n=10
+  n=10000
   r=1
-  read k m
+  k=2
+  read m
   nFijokVaria $n $r $k $m
 # elif [[ "$opcion" == 4 ]]; then
 #   echo "Ingrese n, r, k y método combinatorio a utilizar"

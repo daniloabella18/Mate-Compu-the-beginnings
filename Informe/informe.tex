@@ -6,7 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-
+\usepackage[]{algorithm2e}
 \author{Don cuyi}
 
 %Color
@@ -101,7 +101,33 @@ Recuperado el #6
 Pico pal que lee
 \section{Algoritmo Implementado}
 
+\section{Estrategía uno}
+
+\begin{algorithm}[H]
+ \KwData{n,r \in \mathbb{R}}
+ \KwResult{C(n,r)}
+	
+ }
+ \caption{How to write algorithms}
+\end{algorithm}
+
+
 \section{Formulación experimentos}
+
+Para probar los experimentos se hizo un script en bash que compilara una vez y ejecutara varias veces el ejecutable, variando los metodos de entrada. Los experimentos son.
+
+\subsection{n fijo y r varia}
+
+En este experimento la función combinatoria tiene un n con valor 1000 y parte con r de valor 1, se ejecuta el ejecutable varias veces incrementandole valores a r hasta sea igual que n.
+
+\subsection{n varia y r es fijo}
+
+Para este experimento se asigna un valor inicial a n y r de 100, n  va creciendo hasta llegar a 1000.
+
+\subsection{n fijo y r siendo constantemente multiplicado con k}
+
+
+
 
 \section{Información de Hardware y Software}
 
