@@ -38,7 +38,7 @@ void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf
 }
 
 
-int main(int argc, char *argv[])
+int p4(int argc, char const *argv[],bool flag)
 {
 //--------------/ Evalua que el usuario coloque al menos 2 numeros //--------//
   /*    if (argc<3)
@@ -71,7 +71,9 @@ int main(int argc, char *argv[])
 
   //    cout<<"\nCombinatoria:";
 
-        mpf_out_str(stdout,10,10,comb);
+        if(flag==false)
+          gmp_printf (" %.*Ff", 1, comb);
+
 
     //  cout<<"\n"<<endl;
 

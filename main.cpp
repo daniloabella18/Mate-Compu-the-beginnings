@@ -6,8 +6,9 @@
 #include "p1.cpp"
 #include "p2.cpp"
 #include "p3.cpp"
+#include "p4.cpp"
 /* Estos no pueden ser agregados hasta que se arregle la salida"
-   #include "p4.cpp"
+
    #include "p5.cpp"
  */
 using namespace std;
