@@ -29,12 +29,15 @@ int main(int argc, char const *argv[]) {
                         break;
                 case 2:
                         p2(argc, argv);
+                        flag = true;
                         break;
                 case 3:
-                        // p3(argc,argv);
+                        p3(argc,argv,flag);
+                        flag = true;
                         break;
                 case 4:
-                        // p4(argc,argv);
+                        p4(argc,argv,flag);
+                        flag = true;
                         break;
                 case 5:
                         // p5(argc,argv);

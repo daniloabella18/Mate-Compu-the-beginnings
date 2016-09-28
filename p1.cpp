@@ -30,7 +30,7 @@ int p1(int argc, char const *argv[],bool flag) {
         mpz_init_set_ui(nr_result, 1);
         mpz_init_set_ui(comb, 0);
 
-        //calcula los factoriales de n,r y n-r
+        /*Calcula los factoriales de n,r y n-r*/
         factorial(n, n_result);
         factorial(r, r_result);
         factorial(nr, nr_result);
@@ -38,9 +38,11 @@ int p1(int argc, char const *argv[],bool flag) {
         mpz_mul(comb, r_result, nr_result); // Multiplica dos mpz, si tiene _ui
         mpz_cdiv_q(comb, n_result, comb);// multiplica un mpz y una constante
 
+        //se muestra la salida una sola vez, esto es para poder ejecutar el programa varias veces y sacar el promedio del tiempo sin tener que ver el mismo resultado varias veces.
         if(flag==false)
           mpz_out_str(stdout, 10, comb);
 
+        /* Libera los punteros */
         mpz_clear(n_result);
         mpz_clear(r_result);
         mpz_clear(nr_result);

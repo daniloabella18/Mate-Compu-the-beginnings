@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-
+//calcula el factorial de un número n y lo guarda en result
 void factorial2(mpz_t n, mpz_t result){
         mpz_t i;
         for (mpz_init_set_ui(i, 1); mpz_cmp(i,n) <= 0; mpz_add_ui(i, i, 1)) {
@@ -11,7 +11,7 @@ void factorial2(mpz_t n, mpz_t result){
         }
 }
 
-//multiply all the numbers between from and to and save the result in result
+//multiplica todos los números entre from y to y guarda el resultado en result
 void multiply(mpz_t from, mpz_t to, mpz_t result){
         for (; mpz_cmp(from,to) <=0; mpz_add_ui(from, from, 1)) {
                 mpz_mul(result,result,from); //result = result * i
@@ -19,7 +19,7 @@ void multiply(mpz_t from, mpz_t to, mpz_t result){
 }
 
 int p2(int argc, char const *argv[]) {
-        /* Create Pointers */
+        /* Asigna punteros*/
         mpz_t n;
         mpz_t r;
         mpz_t nr;
@@ -27,7 +27,7 @@ int p2(int argc, char const *argv[]) {
         mpz_t r_result;
         mpz_t nr_result;
         mpz_t comb;
-        /*Initialize integers and store a value in them*/
+        /*Inicia variables y les asigna un número*/
         mpz_init_set_str(n, argv[1],10);
         mpz_init_set_str(r, argv[2],10);
         mpz_init(nr);
@@ -37,9 +37,10 @@ int p2(int argc, char const *argv[]) {
         mpz_init_set_ui(nr_result, 1);
         mpz_init_set_ui(comb,0);
 
-        //This applies symmetry
-        if(mpz_cmp(r,nr) > 0) { //if r is greater than nr
-                mpz_add_ui(r,r,1);
+        /*Factoriza y usa la propiedad de simetria */
+        /*Quita el denominador mayor y calcula el factorial del denominador a partir del valor r+1  */
+        if(mpz_cmp(r,nr) > 0) { //si r es más grande que n - r usa la propiedad de simetria para así factorizar el denomidador mayor.
+                mpz_add_ui(r,r,1); // r= r+1
                 multiply(r,n,n_result);
                 factorial2(nr,nr_result);
                 mpz_cdiv_q(comb,n_result, nr_result);
