@@ -100,7 +100,10 @@ Recuperado el #6
 
 En este informe se pretende mostrar las distintas formas y/o estrategias para calcular la combinatoria de n y r valores , para lo cual se utilizaron distintas técnicas y estrategias tanto algo-rítmicamente como en el uso de conocimiento matemático, además claro de formas de programación.
 
-Cabe mencionar que se utilizó la librería gmp como forma de cálculo mas rápido, todo esto en lenguaje c/c++.
+Cabe mencionar que se utilizó la librería gmp como forma de cálculo mas rápido, todo esto en lenguaje C/C++.
+
+\newpage
+
 \section{Algoritmo Implementado}
 
 \section{Estrategía uno}
@@ -155,7 +158,7 @@ En este caso en nuestra fórmula de Striling el algoritmo se encarga de calcular
 
 Al final del algoritmo se divide la factorial de n por el producto entre r y ( n – r ).
 
-
+\newpage
 
 \section{Formulación experimentos}
 
@@ -163,6 +166,8 @@ Para probar los algoritmos se hizo un script en bash que compilara una vez y eje
 
 A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script va ejecuntando el algoritmo multiples veces haciendo creer a r hasta que alcanza n.
 
+
+\newpage
 \section{Información de Hardware y Software}
 
 
@@ -199,7 +204,7 @@ A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script
 \end{itemize}
 
 
-
+\newpage
 
 \section{Curvas de desempeño de resultados}
 
@@ -219,6 +224,11 @@ A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script
 
 \includegraphics[scale=1]{Metodo4/plot1m4}
 
+\subsection{Estretegia cinco}
+
+\includegraphics[scale=1]{Metodo5/plot1m5}
+
+\newpage
 \section{Conclusiones}
 
 Gracias a los graficos se puede llegar a las sigueitnes conclusiones:
@@ -226,8 +236,9 @@ Gracias a los graficos se puede llegar a las sigueitnes conclusiones:
 \begin{itemize}
 \item La estrategia uno es eficiente cuando se trata de combinatorias en donde el n y r sean cercanos, pero aun así, fue la estrategia que tuva más costes de tiempo.
 \item La estrategia dos es eficiente cuando se trata de combinatorias en donde el n y r sean lejanos entre si.
-\item La estrategia tres tiene un coste superior a la estrategia dos pero el tiempo parejo independiente de los valores de n y r.
-\item La estrategia cuatro es eficiente para valores de r menos pero muy costosa para valores de r cercano al n, llegando a superar a la estrategia uno en lo que es el csote de tiempo.
+\item La estrategia tres tiene un coste superior a la estrategia dos pero el tiempo es parejo independiente de los valores de n y r.
+\item La estrategia cuatro es eficiente para valores de r pequeños pero muy costosa para valores de r cercano al n, llegando a superar a la estrategia uno en lo que es el coste de tiempo.
+\item La estrategia cinco es la menos eficiente y no parece tener un patron fijo.			
 \end{itemize}
 
 \end{document}

@@ -16,7 +16,7 @@ int p3(int argc, char const *argv[],bool flag) {
         mpf_t nr_result;
         mpf_t comb;
         /* Inicia variables y les asigna un número */
-        mpf_set_default_prec( 32 );
+        mpf_set_default_prec( 1024 );
         mpf_init(n);
         mpf_init(r);
         mpf_init(n_result);

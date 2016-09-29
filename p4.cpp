@@ -34,14 +34,6 @@ void factorial(mpf_t n, mpf_t r, mpf_t r_result, mpf_t n_result, mpf_t comb, mpf
 
 int p4(int argc, char const *argv[],bool flag)
 {
-//--------------/ Evalua que el usuario coloque al menos 2 numeros //--------//
-  /*    if (argc<3)
-        {
-                printf("Please supply two numbers to add.\n");
-                return 1;
-        }
- */
-//--------------------------------------------------------------------------//
 
         mpf_t n,r;
 // Transforma valores ingresados como variables mpf_t.
@@ -53,6 +45,9 @@ int p4(int argc, char const *argv[],bool flag)
         mpf_t r_result;
         mpf_t nr_result;
         mpf_t comb;
+
+        mpf_set_default_prec( 1024 );
+        
         /* Inicia variables y les asigna un número */
         mpf_init_set_ui(n_result, 1);
         mpf_init_set_ui(r_result, 1);

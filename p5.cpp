@@ -54,7 +54,7 @@ int p5(int argc, char const *argv[],bool flag)
 
         mpf_t n,r,nn,nr,p_el,pr_el,nr_el,fac_actual;
         mpf_t fac_n,fac_r,fac_nr,rnr;
-
+        mpf_set_default_prec( 1024 );
         mpf_init_set_ui(nr,1);
         mpf_init_set_ui(rnr,1);
 
@@ -65,7 +65,7 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_sub (nr, n, r);
         mpf_init_set(nr_el, nr);
 	mpf_t potencia;
-        
+
 
 // Asigna punteros
         mpf_t nn_result;
@@ -81,9 +81,9 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_init_set_ui(fac_n,1);
         mpf_init_set_ui(fac_r,1);
         mpf_init_set_ui(fac_nr,1);
- 
+
         for ( y=0 ; y < 3 ; y++ )
-        { 
+        {
 // Inicia variables y les asigna un número
           mpf_init_set_ui(nn_result, 1);
           mpf_init_set_ui(numerador, 1);
@@ -94,8 +94,8 @@ int p5(int argc, char const *argv[],bool flag)
           mpf_init_set_ui(dospi,1);
           mpf_init_set_ui(raiz,1);
           mpf_init_set_ui(div,1);
-          mpf_init_set_ui(fac_actual,1); 
-          mpf_init_set_ui(potencia,1); 
+          mpf_init_set_ui(fac_actual,1);
+          mpf_init_set_ui(potencia,1);
 
 //========================// Division //==========================--------------------------//
 //----------/ Numerador /-----------------------------------------------------------------//
@@ -105,14 +105,14 @@ int p5(int argc, char const *argv[],bool flag)
           mpf_div_ui( potencia, potencia, 2 );
 //-------------------------------------------------------------//
           pot = mpf_get_ui(potencia);               // Pasaje a float;
-          
-//---------------------------------------------------------------------------------------//                 
+
+//---------------------------------------------------------------------------------------//
           mpf_pow_ui(numerador, p_el, pot );			// Calcular potencia;
 //----------/Denominador /-----------------------------------------------------------------//
 
           taylor ( n, p_el, div_taylor, denom, nn, nn_result, fac );
 
-          mpf_div( div, numerador, denom );                      
+          mpf_div( div, numerador, denom );
 
 //========================// Raiz //==========================--------------------------//
 
@@ -129,7 +129,7 @@ int p5(int argc, char const *argv[],bool flag)
           {
             case ( 0 ):
 
-            mpf_init_set(fac_n,fac_actual);  
+            mpf_init_set(fac_n,fac_actual);
             mpf_init_set(p_el,pr_el); 		// p_el = pr_el
             mpf_init_set(n,r); 			// n = r
 
@@ -145,7 +145,7 @@ int p5(int argc, char const *argv[],bool flag)
 //---------------------------------------------------------------------------------------------------//
             case ( 2 ):
 
-            mpf_init_set(fac_nr,fac_actual);  
+            mpf_init_set(fac_nr,fac_actual);
             break;
 //---------------------------------------------------------------------------------------------------//
           }
@@ -155,7 +155,7 @@ int p5(int argc, char const *argv[],bool flag)
 
         mpf_mul( rnr , fac_r , fac_nr ); // denominador
 
-        mpf_div( comb , fac_n , rnr ); 
+        mpf_div( comb , fac_n , rnr );
         if(flag==false){ gmp_printf (" %.*Ff", 1, comb); }
 
 
