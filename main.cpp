@@ -7,10 +7,8 @@
 #include "p2.cpp"
 #include "p3.cpp"
 #include "p4.cpp"
-/* Estos no pueden ser agregados hasta que se arregle la salida"
-   #include "p5.cpp"
- */
-using namespace std;
+  #include "p5.cpp"
+ using namespace std;
 
 int main(int argc, char const *argv[]) {
         double t =0;
@@ -40,7 +38,8 @@ int main(int argc, char const *argv[]) {
                         flag = true;
                         break;
                 case 5:
-                        // p5(argc,argv);
+                        p5(argc,argv,flag);
+                        flag = true;
                         break;
                 }
                 /* Calcula el promedio */

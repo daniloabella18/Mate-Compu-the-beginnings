@@ -69,68 +69,28 @@ function nFijokVaria {
 EOFMarker
 }
 
-# #n=$1 r=$2 $3=k  $4=metodo
-# #n fijo y r siendo constantemente multiplicado por k hasta n
-# function rFijokVaria {
-# for (( i=$2; i<=$1; i=i*$3 ))
-#   do
-#     ./a.out $1 $i $4>> data.txt
-#   done
-# }
-#
-# #r fijo con r siendo multiplicado por k hasta n
-# #n=$1 r=$2 $3=k  $4=metodo
-# function rFijokVaria {
-# for (( i=$2; i<=$1; i=i*$3 ))
-#   do
-#     ./a.out $i $2  $4>> data.txt
-#   done
-# }
-#
-# #n y r crecen recorriendo todas las combinaciones posibles
-# #n=$1  metodo=$2
-# function nVariarVaria {
-# for (( i=0; i<=$1; i++ ))
-#   do
-#     for (( j = 0 ; j <= i; j++ )); do
-#       ./a.out $i $j $2>> data.txt
-#     done
-#   done
-# }
-
-echo "Elija una opción"
-echo "1. Graficar para n fijo y r crece hasta n"
-echo "2. Graficar para r fijo y n va desde r hasta n"
-echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
-#echo "4. Graficar para r fijo con r siendo multiplicado por k hasta n"
-#echo "5. Graficar para n y r crecen recorriendo todas las combinaciones posibles"
-read opcion
-#borra todo en data.txt
-if [[ "$opcion" == 1 ]]; then
-  echo "Ingrese método combinatorio a utilizar"
-  n=1000
-  r=1
-  read m
-  nFijo $n $r $m
-elif [[ "$opcion" == 2 ]]; then
-  echo "método combinatorio a utilizar"
-  n=1000
-  r=100
-  read m
-  rFijo $n $r $m
-elif [[ "$opcion" == 3 ]]; then
-  echo "Ingrese k y método combinatorio a utilizar"
-  n=10000
-  r=1
-  k=2
-  read m
-  nFijokVaria $n $r $k $m
-# elif [[ "$opcion" == 4 ]]; then
-#   echo "Ingrese n, r, k y método combinatorio a utilizar"
-#   read n r k m
-#   nFijokVaria $n $r $k $m
-# elif [[ "$opcion" == 5 ]]; then
-#   echo "Ingrese n y método combinatorio a utilizar"
-#   read n r m
-#   nVariarVaria $n $r $m
-fi
+# echo "Elija una opción"
+# echo "1. Graficar para n fijo y r crece hasta n"
+# echo "2. Graficar para r fijo y n va desde r hasta n"
+# echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
+echo "Se están haciendo los gráficos, no me cierres"
+for i in 1 2 3 4 ; do
+  for opcion in  2 3 ; do
+    if [[ "$opcion" == 1 ]]; then
+      n=100
+      r=1
+    #  read m
+      nFijo $n $r $i
+    elif [[ "$opcion" == 2 ]]; then
+      n=150
+      r=15
+      #read m
+      rFijo $n $r $i
+    elif [[ "$opcion" == 3 ]]; then
+      n=1000
+      r=1
+      k=2
+      nFijokVaria $n $r $k $i
+    fi
+  done
+done
