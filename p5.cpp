@@ -1,12 +1,4 @@
-#include <iostream>
-#include <gmp.h>
-#include <cstdlib>
-#include <time.h>
-#include <math.h>
-using namespace std;
-
-//-----------------------------------------------------------------------------------------------------------------------------//
- 
+ using namespace std;
 
 void factorial( mpf_t nn, mpf_t nn_result, mpf_t fac )
 {
@@ -49,9 +41,7 @@ void taylor ( mpf_t n, mpf_t p_el, mpf_t div_taylor, mpf_t denom, mpf_t nn, mpf_
 
                 mpf_add( denom, denom, div_taylor ); // denom = denom + div_taylor
         }
-
 }
-
 
 //-----------------------------------------------------------------------------------------------------------------------------//
 
@@ -59,12 +49,6 @@ void taylor ( mpf_t n, mpf_t p_el, mpf_t div_taylor, mpf_t denom, mpf_t nn, mpf_
 
 int p5(int argc, char const *argv[],bool flag)
 {
-   /*     if (argc<3)
-        {
-                printf("Please supply two numbers to add.\n");
-                return 1;
-        }
-   */
         float n_pow, pot;
         short y;
 
@@ -99,7 +83,7 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_init_set_ui(fac_nr,1);
  
         for ( y=0 ; y < 3 ; y++ )
-        {
+        { 
 // Inicia variables y les asigna un número
           mpf_init_set_ui(nn_result, 1);
           mpf_init_set_ui(numerador, 1);
@@ -172,8 +156,7 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_mul( rnr , fac_r , fac_nr ); // denominador
 
         mpf_div( comb , fac_n , rnr ); 
-
-        mpf_out_str(stdout,10,10,comb);  // Muestra resultado final
+        if(flag==false){ gmp_printf (" %.*Ff", 1, comb); }
 
 
         mpf_clear(nn_result);
@@ -192,7 +175,6 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_clear(raiz);
         mpf_clear(fac_actual);
         mpf_clear(fac_n);
-        mpf_clear(fac_r);
         mpf_clear(fac_nr);
         mpf_clear(fac_r);
         mpf_clear(rnr);
