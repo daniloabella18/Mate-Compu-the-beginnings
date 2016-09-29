@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
         double t =0;
-        double sum=0;
+        double cont=0;
         clock_t tStart;
         bool flag =false;
         if(argc < 4) {
@@ -45,11 +45,11 @@ int main(int argc, char const *argv[]) {
                                 break;
                         }
                         /* Calcula el promedio */
-                        t = (t + (double)(clock() - tStart)/CLOCKS_PER_SEC )/2;
+                        t += (double)(clock() - tStart)/CLOCKS_PER_SEC;
                         /*Ve si ya ha pasado un segundo  */
-                        sum+=t;
-                } while(sum < 1);
-                printf("\t%.7f\n", t);
+                        cont++;
+                } while(t < 1);
+                printf("\t%.7f\n", t/cont);
         }
         return 0;
 }

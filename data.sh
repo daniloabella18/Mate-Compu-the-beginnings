@@ -21,51 +21,51 @@ function nFijo {
    set xlabel "r"
    set format y "%.7f"
    set term png
-   set output "Informe/Metodo$3/plot1m$3.png"
+   set output "Informe/Metodo$3/plot$1m$3.png"
       plot "Informe/Metodo$3/data1.txt"  using 3:2 with lines
 EOFMarker
 }
 
-#r fijo, n creciente
-#n=$1 r=$2 $3=metodo
-function rFijo {
-  for (( i=$2; i<=$1; i++ ))
-  do
-    echo $(./a.out $i $2  $3) $i >> Informe/Metodo$3/data2.txt
-  done
-  gnuplot -persist <<-EOFMarker
-   set title "Metodo $3 \n{/*0.8 n creciente, r fijo}" font ",14" textcolor rgbcolor "royalblue"
-   set nokey
-   set ylabel "Tiempo"
-   set format y "%7.3f"
-   set xlabel "n"
-   set format y "%.7f"
-   set term png
-   set output "Informe/Metodo$3/plot2m$3.png"
-      plot "Informe/Metodo$3/data2.txt"  using 3:2 with lines
-EOFMarker
-
-}
-
-#n=$1 r=$2 $3=k  $4=metodo
-#n fijo y r esta siendo constantemente multiplicado por k hasta n
-function nFijokVaria {
-for (( i=$2; i<=$1; $i=i*$3 ))
-  do
-    echo $(./a.out $i $2  $4) $i >> Informe/Metodo$3/data3.txt
-  done
-  gnuplot -persist <<-EOFMarker
-   set title "Metodo $4 \n{/*0.8 r*k creciendo hasta n}" font ",14" textcolor rgbcolor "royalblue"
-   set nokey
-   set ylabel "Tiempo"
-   set format y "%7.3f"
-   set xlabel "r*k"
-   set format y "%.7f"
-   set term png
-   set output "Informe/Metodo$3/plot3m$4.png"
-      plot "Informe/Metodo$3/data3.txt"  using 3:2 with lines
-EOFMarker
-}
+# #r fijo, n creciente
+# #n=$1 r=$2 $3=metodo
+# function rFijo {
+#   for (( i=$2; i<=$1; i++ ))
+#   do
+#     echo $(./a.out $i $2  $3) $i >> Informe/Metodo$3/data2.txt
+#   done
+#   gnuplot -persist <<-EOFMarker
+#    set title "Metodo $3 \n{/*0.8 n creciente, r fijo}" font ",14" textcolor rgbcolor "royalblue"
+#    set nokey
+#    set ylabel "Tiempo"
+#    set format y "%7.3f"
+#    set xlabel "n"
+#    set format y "%.7f"
+#    set term png
+#    set output "Informe/Metodo$3/plot2m$3.png"
+#       plot "Informe/Metodo$3/data2.txt"  using 3:2 with lines
+# EOFMarker
+#
+# }
+#
+# #n=$1 r=$2 $3=k  $4=metodo
+# #n fijo y r esta siendo constantemente multiplicado por k hasta n
+# function nFijokVaria {
+# for (( i=$2; i<=$1; $i=i*$3 ))
+#   do
+#     echo $(./a.out $i $2  $4) $i >> Informe/Metodo$3/data3.txt
+#   done
+#   gnuplot -persist <<-EOFMarker
+#    set title "Metodo $4 \n{/*0.8 r*k creciendo hasta n}" font ",14" textcolor rgbcolor "royalblue"
+#    set nokey
+#    set ylabel "Tiempo"
+#    set format y "%7.3f"
+#    set xlabel "r*k"
+#    set format y "%.7f"
+#    set term png
+#    set output "Informe/Metodo$3/plot3m$4.png"
+#       plot "Informe/Metodo$3/data3.txt"  using 3:2 with lines
+# EOFMarker
+# }
 
 # #n=$1 r=$2 $3=k  $4=metodo
 # #n fijo y r siendo constantemente multiplicado por k hasta n
@@ -96,38 +96,30 @@ EOFMarker
 #   done
 # }
 
-echo "Elija una opción"
-echo "1. Graficar para n fijo y r crece hasta n"
-echo "2. Graficar para r fijo y n va desde r hasta n"
-echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
+# echo "Elija una opción"
+# echo "1. Graficar para n fijo y r crece hasta n"
+# echo "2. Graficar para r fijo y n va desde r hasta n"
+# echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
 #echo "4. Graficar para r fijo con r siendo multiplicado por k hasta n"
 #echo "5. Graficar para n y r crecen recorriendo todas las combinaciones posibles"
-read opcion
+#read opcion
 #borra todo en data.txt
-if [[ "$opcion" == 1 ]]; then
+# if [[ "$opcion" == 1 ]]; then
   echo "Ingrese método combinatorio a utilizar"
   n=1000
   r=1
   read m
   nFijo $n $r $m
-elif [[ "$opcion" == 2 ]]; then
-  echo "método combinatorio a utilizar"
-  n=1000
-  r=150
-  read m
-  rFijo $n $r $m
-elif [[ "$opcion" == 3 ]]; then
-  echo "Ingrese k y método combinatorio a utilizar"
-  n=10000
-  r=1
-  read n r k m
-  nFijokVaria $n $r $k $m
-# elif [[ "$opcion" == 4 ]]; then
-#   echo "Ingrese n, r, k y método combinatorio a utilizar"
+# elif [[ "$opcion" == 2 ]]; then
+#   echo "método combinatorio a utilizar"
+#   n=1000
+#   r=150
+#   read m
+#   rFijo $n $r $m
+# elif [[ "$opcion" == 3 ]]; then
+#   echo "Ingrese k y método combinatorio a utilizar"
+#   n=10000
+#   r=1
 #   read n r k m
 #   nFijokVaria $n $r $k $m
-# elif [[ "$opcion" == 5 ]]; then
-#   echo "Ingrese n y método combinatorio a utilizar"
-#   read n r m
-#   nVariarVaria $n $r $m
 fi
