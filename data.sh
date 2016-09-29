@@ -74,7 +74,7 @@ EOFMarker
 # echo "2. Graficar para r fijo y n va desde r hasta n"
 # echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
 echo "Se están haciendo los gráficos, no me cierres"
-for i in 1 4 ; do
+for i in 5 ; do
       n=1000
       r=1
     #  read m
