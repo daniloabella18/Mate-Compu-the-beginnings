@@ -57,7 +57,7 @@ void taylor ( mpf_t n, mpf_t p_el, mpf_t div_taylor, mpf_t denom, mpf_t nn, mpf_
 
 
 
-int main(int argc, char *argv[])
+int p5(int argc, char const *argv[],bool flag)
 {
    /*     if (argc<3)
         {
