@@ -74,23 +74,9 @@ EOFMarker
 # echo "2. Graficar para r fijo y n va desde r hasta n"
 # echo "3. Graficar para n fijo y r siendo constantemente multiplicado por k hasta n"
 echo "Se están haciendo los gráficos, no me cierres"
-for i in 1 2 3 4 ; do
-  for opcion in  2 3 ; do
-    if [[ "$opcion" == 1 ]]; then
-      n=100
+for i in 1 4 ; do
+      n=1000
       r=1
     #  read m
       nFijo $n $r $i
-    elif [[ "$opcion" == 2 ]]; then
-      n=150
-      r=15
-      #read m
-      rFijo $n $r $i
-    elif [[ "$opcion" == 3 ]]; then
-      n=1000
-      r=1
-      k=2
-      nFijokVaria $n $r $k $i
-    fi
-  done
 done
