@@ -65,8 +65,8 @@ int main(int argc, char *argv[])
                 return 1;
         }
    */
-        float n_pow, potencia, numerador_n;
-        short i;
+        float n_pow, pot;
+        short y;
 
         mpf_t n,r,nn,nr,p_el,pr_el,nr_el,fac_actual;
         mpf_t fac_n,fac_r,fac_nr,rnr;
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
         mpf_init_set_str (pr_el, argv[2], 10);
         mpf_sub (nr, n, r);
         mpf_init_set(nr_el, nr);
-
+	mpf_t potencia;
         
 
 // Asigna punteros
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
         mpf_init_set_ui(fac_r,1);
         mpf_init_set_ui(fac_nr,1);
  
-        for ( i=0 ; i < 3 ; i++ )
+        for ( y=0 ; y < 3 ; y++ )
         {
 // Inicia variables y les asigna un número
           mpf_init_set_ui(nn_result, 1);
@@ -111,20 +111,24 @@ int main(int argc, char *argv[])
           mpf_init_set_ui(raiz,1);
           mpf_init_set_ui(div,1);
           mpf_init_set_ui(fac_actual,1); 
+          mpf_init_set_ui(potencia,1); 
 
 //========================// Division //==========================--------------------------//
 //----------/ Numerador /-----------------------------------------------------------------//
 
           n_pow = mpf_get_ui(p_el);                                 // Pasaje a int;
+          mpf_add_ui( potencia, p_el, 1 );
+          mpf_div_ui( potencia, potencia, 2 );
 //-------------------------------------------------------------//
-          potencia = (n_pow+1)/2;         // Pasaje a float;
-//---------------------------------------------------------------------------------------//
-          numerador_n = pow( n_pow, potencia );                   // Calcular potencia;
+          pot = mpf_get_ui(potencia);               // Pasaje a float;
+          
+//---------------------------------------------------------------------------------------//                 
+          mpf_pow_ui(numerador, p_el, pot );			// Calcular potencia;
 //----------/Denominador /-----------------------------------------------------------------//
 
           taylor ( n, p_el, div_taylor, denom, nn, nn_result, fac );
 
-          mpf_ui_div( div, numerador_n, denom );                        // div = numerador_n / denom
+          mpf_div( div, numerador, denom );                      
 
 //========================// Raiz //==========================--------------------------//
 
@@ -137,7 +141,7 @@ int main(int argc, char *argv[])
 
           mpf_mul(fac_actual,raiz,div); 	//fac_actual = raiz * div
 
-     	  switch( i )
+     	  switch( y )
           {
             case ( 0 ):
 
@@ -192,7 +196,7 @@ int main(int argc, char *argv[])
         mpf_clear(fac_nr);
         mpf_clear(fac_r);
         mpf_clear(rnr);
-
+        mpf_clear(potencia);
 
         return 0;
 }
