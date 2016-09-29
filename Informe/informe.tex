@@ -104,12 +104,64 @@ Pico pal que lee
 \section{Estrategía uno}
 
 \begin{algorithm}[H]
- \KwData{n,r \in \mathbb{R}}
+ \KwData{n,r $\in$ $\mathbb{Z}$}
  \KwResult{C(n,r)}
-	
- }
+	nr = n -r\;
+	n\_result = n! \;
+	r\_result = r! \;
+	nr\_result = nr! \;
+	combinatoria = $\dfrac{n\_result}{r\_result \cdot nr\_result}$ \;
  \caption{How to write algorithms}
 \end{algorithm}
+
+\subsection{Estrategía dos}
+
+Para la creación de este algoritmo se baso en el siguiente ejemplo:
+\[\begin{matrix}
+{7 \choose 4}  &= \dfrac{7!}{4! \cdot 3!} = \dfrac{7 \cdot 6 \cdot 5}{3 \cdot 2}\\ 
+ &\\
+{7 \choose 3}  &= \dfrac{7!}{3!\cdot4!} = \dfrac{7 \cdot 6 \cdot 5}{3 \cdot 2 }\\
+\end{matrix}
+\]
+
+Gracias a la propiedad de simetría da el mismo resultado pero con los resultados cambiados, cuando $n-r > r$ ocurre que el mayor número del denominador se queda a la derecha en caso contrario el mayor se queda la izquierda.
+
+Además se eso se observa cuando se factoriza factoriales el númerador queda de la forma $n \cdot (n-1) \cdot \ldots \cdot (r+1)!$, en base a todo esto se creo el siguiente algoritmo
+
+\begin{itemize}
+\item Se usa la propiedad se simetría para así lograr que r tenga su máximo número. Ejemplo:
+
+Sí 
+
+\item
+\end{itemize}
+
+
+%\begin{algorithm}[H]
+% \KwData{n,r $\in$ $\mathbb{Z}$}
+% \KwResult{C(n,r)}
+% 	nr = n-r
+%	\eIf{n - r $>$ r}{
+%   		r=r+1;
+%   		$n_result = r \cdot r+1 \cdot \ldots \cdot n$
+%   		nr_result = (nr)!
+%   		comb = $\frac{n_result}{nr_result}$
+%   		}{
+%   		nr=nr+1;
+%   		$n_result = nr \cdot nr+1 \cdot \ldots \cdot n$
+%   		r_result = r!
+%   		comb = $\frac{n_result}{r_result}$
+%  	}
+% \caption{How to write algorithms}
+%\end{algorithm}
+
+
+\subsection{Estrategía tres}
+
+\subsection{Estregía cuatro}
+
+\subsection{Estrategía cinco}
+
 
 
 \section{Formulación experimentos}
@@ -126,7 +178,7 @@ Para este experimento se asigna un valor inicial a n y r de 100, n  va creciendo
 
 \subsection{n fijo y r siendo constantemente multiplicado con k}
 
-
+En este experimento de deja un n fijo de 10000 y un r de 1, se ejecuta varias veces multiplicando constantemente r por una constante k igual 2 hasta que r sea igual o mayor que r.
 
 
 \section{Información de Hardware y Software}
