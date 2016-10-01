@@ -106,22 +106,23 @@ Cabe mencionar que se utilizó la librería gmp como forma de cálculo mas rápi
 
 \section{Algoritmo Implementado}
 
-\section{Estrategía uno}
+\subsection{Estrategía uno}
 
 Esta estrategía es la más simple, solo se calcularon los valores n!, (n-r)! y r!, luego  se obtuvo la combinatoria multiplicando r! por (n-r)! y diviendo n! por el resultado de la multiplicación anterior.
 
 \subsection{Estrategía dos}
 
 Para la creación de este algoritmo se baso en el siguiente ejemplo:
+
 \[\begin{matrix}
 {7 \choose 4}  &= \dfrac{7!}{4! \cdot 3!} = \dfrac{7 \cdot 6 \cdot 5}{3 \cdot 2}\\ 
  &\\
 {7 \choose 3}  &= \dfrac{7!}{3!\cdot4!} = \dfrac{7 \cdot 6 \cdot 5}{3 \cdot 2 }\\
 \end{matrix}
 \]
-
+\\
 Gracias a la propiedad de simetría da el mismo resultado pero con los resultados cambiados, cuando $n-r > r$ ocurre que el mayor número del denominador se queda a la derecha en caso contrario el mayor se queda la izquierda.
-
+\\\\
 Además se eso se observa cuando se factoriza factoriales el númerador queda de la forma $n \cdot (n-1) \cdot \ldots \cdot (r+1)!$, en base a todo esto se creo el siguiente algoritmo
 
 \begin{itemize}
@@ -143,6 +144,8 @@ Además se eso se observa cuando se factoriza factoriales el númerador queda de
 
 Se aplico el mismo algoritmo que en la estrategía uno pero se cambiaron los mpz por mpf para así usar el punto flotante en los calculos.
 
+\newpage
+
 \subsection{Estregía cuatro}
 
 
@@ -154,16 +157,30 @@ Una vez finalizado se tendría el valor de la combinatoria tras todas las multip
 
 \subsection{Estrategía cinco}
 
-En este caso en nuestra fórmula de Striling el algoritmo se encarga de calcular primero el valor del numerador en la división de dicha fórmula, luego saca el exponencial elevado a n para tener el denominador , y una vez ambos sacados se divide y se multiplica por la raiz de 2*pi, este procedimiento se realiza primero con n, luego con r y finalmente con (n-r) para sacar sus respectivas aproximaciones de factoriales.  
+En este caso en nuestra fórmula de Striling primero se realizó una factorización de la fórmula para conseguir una mayor eficiencia y facilidad al trabajar con su algoritmo, evitando así
+variables de más y conseguir un resultado más rápido.\\\\
+La factorización relizada fue la siguiente:
+\\
+\[\begin{matrix}
 
-Al final del algoritmo se divide la factorial de n por el producto entre r y ( n – r ).
+{n!} &\approx {( \sqrt{(2 \cdot \pi)} )}\cdot{(\dfrac{n^{(n+(1/2)})}{e^n})}\\
 
-\newpage
+&\\
 
+{n!} &\approx {( \sqrt{(2 \cdot \pi)} )}\cdot{( \dfrac{ n^n \cdot n^{(1/2)} }{ e^n })}\\
+
+&\\
+
+{n!} &\approx {( \sqrt{(2 \cdot \pi)} )}\cdot{( ( \dfrac{ n }{ e } )^n }\cdot{ n^{(1/2)} )}\\
+
+&\\
+
+\end{matrix}
+\]
 \section{Formulación experimentos}
 
 Para probar los algoritmos se hizo un script en bash que compilara una vez y ejecutara varias veces el ejecutable, variando los metodos de entrada. 
-
+\\\\
 A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script va ejecuntando el algoritmo multiples veces haciendo creer a r hasta que alcanza n.
 
 
