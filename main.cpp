@@ -48,7 +48,7 @@ int main(int argc, char const *argv[]) {
                         t += (double)(clock() - tStart)/CLOCKS_PER_SEC;
                         /*Ve si ya ha pasado un segundo  */
                         cont++;
-                } while(t < 1);
+                } while(t <= 1);
                 printf("\t%.7f\n", t/cont);
         }
         return 0;
