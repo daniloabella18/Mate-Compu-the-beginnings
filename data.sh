@@ -36,7 +36,7 @@ for (( j = 1; j <= 5; j++ )); do
   r=1
   nFijo $n $r $j
 
-  n=300
+  n=100
   r=1
   nFijo $n $r $j
 
