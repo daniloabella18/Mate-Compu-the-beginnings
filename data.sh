@@ -28,16 +28,16 @@ EOFMarker
 echo "Se están creando las gráficas, por favor espere"
 for (( j = 1; j <= 5; j++ )); do
 
-  n=300
+  n=10000
   r=1
   nFijo $n $r $j
 
-  n=500
-  r=1
-  nFijo $n $r $j
-
-  n=100
-  r=1
-  nFijo $n $r $j
+  # n=500
+  # r=1
+  # nFijo $n $r $j
+  #
+  # n=100
+  # r=1
+  # nFijo $n $r $j
 
 done
