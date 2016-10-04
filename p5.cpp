@@ -7,7 +7,7 @@ int p5(int argc, char const *argv[],bool flag)
 {
         float pot_n;
         short y;
-        mpf_set_default_prec( 1024 );
+        mpf_set_default_prec( 1048576 );
         mpf_t r, n, nn, nr, p_el, pr_el, nr_el;
         mpf_t fac_n, fac_r, fac_nr, rnr, fac_actual;
 
