@@ -17,11 +17,15 @@ El script para gráficar se debe ejecutar con
 
   `bash data.sh`
 
-Esto va a generar 3 tipos de gráficos de disintos.
+Esto va a generar 4 tipos de gráficos de distintos para cada estrategia y se demora cerca de 2 días en completarse.
 
- - n fijo y r crece hasta n
- - r fijo y n va desde r hasta n
- - n fijo y r siendo constantemente multiplicado por k hasta n
+Los gráficos son:
 
+ - n fijo y r crece hasta n, donce n = 100
+ - n fijo y r crece hasta n, donce n = 300
+ - n fijo y r crece hasta n, donce n = 500
+ - n fijo y r crece hasta n, donce n = 10000 (se recomienda omitir este)
 
 Link del repositorio git: https://github.com/daniloabella18/Mate-Compu-the-beginnings
+
+Creado por Sergio Salinas y Danilo Ábella.

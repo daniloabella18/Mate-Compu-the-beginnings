@@ -5,6 +5,7 @@
 #n fijo y r crece hasta n
 #n=$1 r=$2 $3=metodo
 function nFijo {
+  #elimina todo el contenido del archivo a guardar si es que existe.
   echo -n "" > Informe/Metodo$3/plot$1m$3.txt
   for (( i=$2; i<=$1; i++ ))
   do
@@ -23,21 +24,27 @@ function nFijo {
 EOFMarker
 }
 
-#borrar el 1922 en el plot10000
 
 echo "Se están creando las gráficas, por favor espere"
-for j in 3 5; do
+#Crea las gráficas para los 5 metodos
+for j in 1 2 3 4 5; do
+
+
+  n=100
+  r=1
+  nFijo $n $r $j
+
+  n=300
+  r=1
+  nFijo $n $r $j
+
+  n=500
+  r=1
+  nFijo $n $r $j
 
   n=10000
   r=1
   nFijo $n $r $j
 
-  # n=500
-  # r=1
-  # nFijo $n $r $j
-  #
-  # n=100
-  # r=1
-  # nFijo $n $r $j
 
 done
