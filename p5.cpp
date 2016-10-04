@@ -7,7 +7,7 @@ int p5(int argc, char const *argv[],bool flag)
 {
         float pot_n;
         short y;
-
+        mpf_set_default_prec( 1024 );
         mpf_t r, n, nn, nr, p_el, pr_el, nr_el;
         mpf_t fac_n, fac_r, fac_nr, rnr, fac_actual;
 
@@ -16,7 +16,7 @@ int p5(int argc, char const *argv[],bool flag)
 
         mpf_init_set_str (r, argv[2], 10);
         mpf_init_set_str (n, argv[1], 10);
-        mpf_sub (nr, n, r);   
+        mpf_sub (nr, n, r);
 
 // Asigna punteros
         mpf_t comb;
@@ -38,11 +38,11 @@ int p5(int argc, char const *argv[],bool flag)
         mpf_init_set_ui(fac_r,1);
         mpf_init_set_ui(fac_nr,1);
         mpf_init_set_ui(rnr,1);
- 
+
         for ( y=0 ; y < 3 ; y++ )
         {
 // Inicia variables y les asigna un número
-          mpf_init_set_ui(fac_actual,1); 
+          mpf_init_set_ui(fac_actual,1);
           mpf_init_set_ui(comb,1);
           mpf_init_set_ui(div,1);
           mpf_init_set_ui(n_e,1);
@@ -51,7 +51,7 @@ int p5(int argc, char const *argv[],bool flag)
 //----------------------/ n_e /---------------------------------------------//
 
             mpf_div( n_e , n , exp );
-            pot_n = mpf_get_ui(n); 	
+            pot_n = mpf_get_ui(n);
             mpf_pow_ui( n_e , n_e , pot_n );
 
 //----------------------/ n_raiz /---------------------------------------------//
@@ -68,7 +68,7 @@ int p5(int argc, char const *argv[],bool flag)
           {
             case ( 0 ):
 
-            mpf_init_set(fac_n,fac_actual);  
+            mpf_init_set(fac_n,fac_actual);
             mpf_init_set(n,r); 			// n = r
 
             break;
@@ -82,7 +82,7 @@ int p5(int argc, char const *argv[],bool flag)
 //---------------------------------------------------------------------------------------------------//
             case ( 2 ):
 
-            mpf_init_set(fac_nr,fac_actual);  
+            mpf_init_set(fac_nr,fac_actual);
             break;
 //---------------------------------------------------------------------------------------------------//
           }

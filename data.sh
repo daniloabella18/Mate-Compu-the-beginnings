@@ -23,10 +23,10 @@ function nFijo {
 EOFMarker
 }
 
-
+#borrar el 1922 en el plot10000
 
 echo "Se están creando las gráficas, por favor espere"
-for (( j = 1; j <= 5; j++ )); do
+for j in 3 5; do
 
   n=10000
   r=1
