@@ -181,8 +181,15 @@ La factorización relizada fue la siguiente:
 
 Para probar los algoritmos se hizo un script en bash que compilara una vez y ejecutara varias veces el ejecutable, variando los metodos de entrada. 
 \\\\
-A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script va ejecuntando el algoritmo multiples veces haciendo creer a r hasta que alcanza n.
 
+Los experimentos fueron 3.
+
+\begin{itemize}
+\item n fijo para n=100 y r crece hasta n
+\item n fijo para n=300 y r crece hasta n
+\item n fijo para n=500 y r crece hasta n
+\item n fijo para n=10000 y r crece hasta n
+\end{itemize}
 
 \newpage
 \section{Información de Hardware y Software}
@@ -227,23 +234,75 @@ A cada estrategía se le asigno un n fijo de 1000 y un r inicial de 1, el script
 
 \subsection{Estrategía uno}
 
-\includegraphics[scale=1]{Metodo1/plot1m1}
+\subsubsection{Para n fijo y r crece hasta n=100}
+\includegraphics[scale=1]{Metodo1/plot100m1}
 
+\subsubsection{Para n fijo y r crece hasta n=300}
+\includegraphics[scale=1]{Metodo1/plot300m1}
+
+\subsubsection{Para n fijo y r crece hasta n=500}
+\includegraphics[scale=1]{Metodo1/plot500m1}
+
+\subsubsection{Para n fijo y r crece hasta n=10000}
+\includegraphics[scale=1]{Metodo1/plot10000m1}
+\newpage
 \subsection{Estrategia dos}
 
-\includegraphics[scale=1]{Metodo2/plot1m2}
+\subsubsection{Para n fijo y r crece hasta n=100}
+\includegraphics[scale=1]{Metodo2/plot100m2}
+
+\subsubsection{Para n fijo y r crece hasta n=300}
+\includegraphics[scale=1]{Metodo2/plot300m2}
+
+\subsubsection{Para n fijo y r crece hasta n=500}
+\includegraphics[scale=1]{Metodo2/plot500m2}
+
+\subsubsection{Para n fijo y r crece hasta n=10000}
+\includegraphics[scale=1]{Metodo2/plot10000m2}
+
+\newpage
 
 \subsection{Estrategia tres}
 
-\includegraphics[scale=1]{Metodo3/plot1m3}
+\subsubsection{Para n fijo y r crece hasta n=100}
+\includegraphics[scale=1]{Metodo3/plot100m3}
 
+\subsubsection{Para n fijo y r crece hasta n=300}
+\includegraphics[scale=1]{Metodo3/plot300m3}
+
+\subsubsection{Para n fijo y r crece hasta n=500}
+\includegraphics[scale=1]{Metodo3/plot500m3}
+
+\subsubsection{Para n fijo y r crece hasta n=10000}
+\includegraphics[scale=1]{Metodo3/plot10000m3}
+\newpage
 \subsection{Estrategia cuatro}
 
-\includegraphics[scale=1]{Metodo4/plot1m4}
+\subsubsection{Para n fijo y r crece hasta n=100}
+\includegraphics[scale=1]{Metodo4/plot100m4}
 
+\subsubsection{Para n fijo y r crece hasta n=300}
+\includegraphics[scale=1]{Metodo4/plot300m4}
+
+\subsubsection{Para n fijo y r crece hasta n=500}
+\includegraphics[scale=1]{Metodo4/plot500m4}
+
+\subsubsection{Para n fijo y r crece hasta n=10000}
+\includegraphics[scale=1]{Metodo4/plot10000m4}
+\newpage
 \subsection{Estretegia cinco}
 
-\includegraphics[scale=1]{Metodo5/plot1m5}
+\subsubsection{Para n fijo y r crece hasta n=100}
+\includegraphics[scale=1]{Metodo5/plot100m5}
+
+\subsubsection{Para n fijo y r crece hasta n=300}
+\includegraphics[scale=1]{Metodo5/plot300m5}
+
+\subsubsection{Para n fijo y r crece hasta n=500}
+\includegraphics[scale=1]{Metodo5/plot500m5}
+
+\subsubsection{Para n fijo y r crece hasta n=10000}
+\includegraphics[scale=1]{Metodo5/plot10000m5}
 
 \newpage
 \section{Conclusiones}
@@ -255,7 +314,7 @@ Gracias a los graficos se puede llegar a las sigueitnes conclusiones:
 \item La estrategia dos es eficiente cuando se trata de combinatorias en donde el n y r sean lejanos entre si.
 \item La estrategia tres tiene un coste superior a la estrategia dos pero el tiempo es parejo independiente de los valores de n y r.
 \item La estrategia cuatro es eficiente para valores de r pequeños pero muy costosa para valores de r cercano al n, llegando a superar a la estrategia uno en lo que es el coste de tiempo.
-\item La estrategia cinco es la menos eficiente y no parece tener un patron fijo.			
+\item La estrategia cinco es la más eficiente en general, aunque tiene más coste en cuando n y r son cercanos entre sí pero aun sigue es más eficiente que el resto.
 \end{itemize}
 
 \end{document}
